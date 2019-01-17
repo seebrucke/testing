@@ -1,13 +1,25 @@
+/*
+ * Made by Erik Terwan
+ * 24th of November 2015
+ * MIT license
+ *
+ *
+ * If you are thinking of using this in
+ * production code, beware of the browser
+ * prefixes.
+ */
 
  body
  {
    margin: 0;
    padding: 0;
+   
+   /* make it look decent enough */
    background: #232323;
    color: #cdcdcd;
    font-family: "Avenir Next", "Avenir", sans-serif;
    
-   overflow-x: hidden;
+   overflow-x: hidden; /* needed because hiding the menu on the right side is not perfect,  */
  }
  
  a
@@ -56,7 +68,7 @@
  /*
   * Just a quick hamburger
   */
-span
+ #menuToggle span
  {
    display: block;
    width: 33px;
@@ -76,12 +88,12 @@ span
                opacity 0.55s ease;
  }
  
-span:first-child
+ #menuToggle span:first-child
  {
    transform-origin: 0% 0%;
  }
  
-span:nth-last-child(2)
+ #menuToggle span:nth-last-child(2)
  {
    transform-origin: 0% 100%;
  }
@@ -93,19 +105,17 @@ span:nth-last-child(2)
  #menuToggle input:checked ~ span
  {
    opacity: 1;
-   /* transform: rotate(45deg) translate(-2px, -1px); */
+   transform: rotate(45deg) translate(-2px, -1px);
    background: #232323;
-   background-color: green;
  }
  
  /*
   * But let's hide the middle one.
   */
- #menuToggle input:checked + span:nth-child(2)
+ #menuToggle input:checked ~ span:nth-last-child(3)
  {
-   /* opacity: 0; */
-   background-color: yellow;
-   /* transform: rotate(0deg) scale(0.2, 0.2); */
+   opacity: 0;
+   transform: rotate(0deg) scale(0.2, 0.2);
  }
  
  /*
@@ -114,8 +124,7 @@ span:nth-last-child(2)
  #menuToggle input:checked ~ span:nth-last-child(2)
  {
    opacity: 1;
-   background-color: red;
-   /* transform: rotate(-45deg) translate(0, -1px); */
+   transform: rotate(-45deg) translate(0, -1px);
  }
  
  /*
